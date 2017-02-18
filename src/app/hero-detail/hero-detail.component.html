@@ -1,3 +1,18 @@
-<p>
-  hero-detail works!
-</p>
+
+<!--
+*ngIf is like
+if(selectedHero!=null) {
+
+}
+-->
+<div *ngIf="hero">
+  <h2>{{hero.name}} details!</h2>
+  <div>
+    <label>id:</label>{{hero.id}}
+    <div>
+      <label>name: </label>
+      <!-- placeholder = hint text-->
+      <input [(ngModel)]="hero.name" placeholder="name">
+    </div>
+  </div>
+</div>
