@@ -1,4 +1,3 @@
-
 <!--
 *ngIf is like
 if(selectedHero!=null) {
@@ -6,13 +5,14 @@ if(selectedHero!=null) {
 }
 -->
 <div *ngIf="hero">
-  <h2>{{hero.name}} details!</h2>
-  <div>
-    <label>id:</label>{{hero.id}}
+    <h2>{{hero.name}} details!</h2>
     <div>
-      <label>name: </label>
-      <!-- placeholder = hint text-->
-      <input [(ngModel)]="hero.name" placeholder="name">
+        <label>id:</label>{{hero.id}}
+        <div>
+            <label>name: </label>
+            <!-- placeholder = hint text-->
+            <input [(ngModel)]="hero.name" placeholder="name">
+        </div>
+        <button (click)="goBack()">Back</button>
     </div>
-  </div>
 </div>
