@@ -23,6 +23,17 @@ export class HeroesComponent implements OnInit {
         this.selectedHero = hero;
     }
 
+    add(name: string): void {
+        name = name.trim();
+        if (!name) { return; }
+        this.heroService.create(name)
+            .then(hero => {
+                this.heroes.push(hero);
+                this.selectedHero = null;
+            });
+    }
+
+
     getHeroes() {
         this.heroService.getHeroes().then(heroes => this.heroes = heroes);
     }
@@ -36,6 +47,16 @@ export class HeroesComponent implements OnInit {
         //to go there we use router and pass 2 parameters and navigate around
         this.router.navigate(['/detail', this.selectedHero.id]);
     }
+
+    delete(hero: Hero): void {
+        this.heroService
+            .delete(hero.id)
+            .then(() => {
+                this.heroes = this.heroes.filter(h => h !== hero);
+                if (this.selectedHero === hero) { this.selectedHero = null; }
+            });
+    }
+
 
 }
 
